@@ -1,0 +1,23 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.plr.cgmfix.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "cgmfix.refmap.json",
+  "mixins": [
+    "common.MixinConfig$Grenades",
+    "common.MixinConfig$Griefing",
+    "common.MixinConfig$Missiles",
+    "common.MixinGrenadeEntity",
+    "common.MixinLivingEntity",
+    "common.MixinMissileEntity",
+    "common.MixinModDamageTypes$Sources",
+    "common.MixinThrowableGrenadeEntity"
+  ],
+  "client": [
+    "client.MixinGunRenderingHandler"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
