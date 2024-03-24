@@ -24,8 +24,8 @@ public class ProjectileUtils {
         if (world.isClientSide())
             return;
 
-        DamageSource source = entity instanceof ProjectileEntity projectile ? entity.damageSources().explosion(entity, projectile.getShooter()) : null;
-        Explosion.BlockInteraction mode = breakTerrain ? Explosion.BlockInteraction.DESTROY : Explosion.BlockInteraction.KEEP;
+        DamageSource source = entity instanceof ProjectileEntity projectile ? DamageSource.explosion(projectile.getShooter()) : null;
+        Explosion.BlockInteraction mode = breakTerrain ? Explosion.BlockInteraction.BREAK : Explosion.BlockInteraction.NONE;
         Explosion explosion = new ProjectileExplosion(world, entity, source, null, entity.getX(), entity.getY(), entity.getZ(), radius, false, mode);
 
         if (net.minecraftforge.event.ForgeEventFactory.onExplosionStart(world, explosion))
@@ -36,15 +36,14 @@ public class ProjectileUtils {
         explosion.finalizeExplosion(true);
 
         // Send event to blocks that are exploded (none if mode is none)
-        explosion.getToBlow().forEach(pos ->
-        {
+        explosion.getToBlow().forEach(pos -> {
             if (world.getBlockState(pos).getBlock() instanceof IExplosionDamageable) {
                 ((IExplosionDamageable) world.getBlockState(pos).getBlock()).onProjectileExploded(world, world.getBlockState(pos), pos, entity);
             }
         });
 
         // Clears the affected blocks if mode is none
-        if (!explosion.interactsWithBlocks()) {
+        if (mode == Explosion.BlockInteraction.NONE) {
             explosion.clearToBlow();
         }
 
