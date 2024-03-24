@@ -12,6 +12,8 @@
     "common.MixinLivingEntity",
     "common.MixinMissileEntity",
     "common.MixinModDamageTypes$Sources",
+    "common.MixinProjectileEntity",
+    "common.MixinServerPlayHandler",
     "common.MixinThrowableGrenadeEntity"
   ],
   "client": [

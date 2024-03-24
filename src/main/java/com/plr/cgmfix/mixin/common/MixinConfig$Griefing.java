@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(value = Config.Griefing.class, remap = false)
-public class MixinConfig$Griefing {
+public abstract class MixinConfig$Griefing {
     @Redirect(
             method = "<init>",
             at = @At(

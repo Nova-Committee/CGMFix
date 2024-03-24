@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(ModDamageTypes.Sources.class)
+@Mixin(value = ModDamageTypes.Sources.class, remap = false)
 public abstract class MixinModDamageTypes$Sources {
     @Shadow(remap = false)
     private static Holder.Reference<DamageType> getHolder(RegistryAccess access, ResourceKey<DamageType> damageTypeKey) {

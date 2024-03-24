@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(value = Config.Grenades.class, remap = false)
-public class MixinConfig$Grenades implements IEnableBlockRemoval {
+public abstract class MixinConfig$Grenades implements IEnableBlockRemoval {
     @Unique
     private ForgeConfigSpec.BooleanValue cgmfix$enableBlockRemoval;
 
