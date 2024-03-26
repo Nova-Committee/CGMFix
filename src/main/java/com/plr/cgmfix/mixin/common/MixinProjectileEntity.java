@@ -36,7 +36,7 @@ public abstract class MixinProjectileEntity extends Entity {
     )
     private void redirect$onHit$onHitBlock(ProjectileEntity instance, BlockState state, BlockPos pos, Direction face, double x, double y, double z) {
         this.onHitBlock(state, pos, face, x, y, z);
-        level.gameEvent(GameEvent.PROJECTILE_LAND, position(), GameEvent.Context.of(state));
+        level.gameEvent(GameEvent.PROJECTILE_LAND, pos);
     }
 
     @Redirect(
@@ -49,6 +49,6 @@ public abstract class MixinProjectileEntity extends Entity {
     )
     private void redirect$onHit$onHitBlock(ProjectileEntity instance, Entity entity, Vec3 hitVec, Vec3 startVec, Vec3 endVec, boolean headshot) {
         this.onHitEntity(entity, hitVec, startVec, endVec, headshot);
-        level.gameEvent(GameEvent.PROJECTILE_LAND, position(), GameEvent.Context.of(entity));
+        level.gameEvent(GameEvent.PROJECTILE_LAND, pos);
     }
 }

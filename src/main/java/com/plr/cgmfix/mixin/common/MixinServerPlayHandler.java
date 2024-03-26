@@ -22,6 +22,6 @@ public abstract class MixinServerPlayHandler {
             require = 0
     )
     private static void inject$handleShoot(C2SMessageShoot message, ServerPlayer player, CallbackInfo ci) {
-        player.level.gameEvent(GameEvent.PROJECTILE_SHOOT, player.position(), GameEvent.Context.of(player));
+        player.level.gameEvent(GameEvent.PROJECTILE_SHOOT, player);
     }
 }
